@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "cloudinary"
 gem "dotenv-rails"
 gem "rails", "~> 8.1.3"
 gem "sprockets-rails"
