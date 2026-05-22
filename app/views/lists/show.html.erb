@@ -1,0 +1,23 @@
+<div class="container">
+  <h1><%= @list.name %></h1>
+    <%= link_to "← Retour aux listes", lists_path,
+        class: "text-decoration-none text-muted small" %>
+  <p> <%= link_to "Créer un bookmark dans cette liste", new_list_bookmark_path(@list) %></p>
+
+
+
+ <h2 class="mt-4">Films de la liste</h2>
+
+  <% if @list.bookmarks.any? %>
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card mb-3 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="fw-bold"><%= bookmark.movie.title %></h5>
+          <p class="text-muted mb-2"><%= bookmark.comment %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-muted fst-italic">Aucun film dans cette liste pour le moment.</p>
+  <% end %>
+</div>

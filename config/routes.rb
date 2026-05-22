@@ -5,10 +5,27 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+   resources :lists, only: [:index, :new, :create, :show] do
+    resources :bookmarks, only: [:new, :create]
+  end
+ resources :bookmarks, only: [:destroy]
+end
+
+
+  # get "/lists", to: "lists#index"
+  # get "/lists/new", to: "lists#new"
+  # post "/lists", to: "lists#create"
+  # get "/lists/:id/edit", to: "lists#edit"
+  # patch "/lists/:id", to: "lists#update"
+  # get "lists/:id", to: "lists#show"
+  # get "bookmarks/new", to: "bookmarks#new"
+  # post "/bookmarks", to: "bookmarks#create"
+  # delete "bookmarks/:id", to: "bookmarks#destroy"
+
+
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
   # root "posts#index"
-end
